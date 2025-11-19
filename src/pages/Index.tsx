@@ -1,12 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import WebGLBackground from '@/components/WebGLBackground';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import FeaturedSection from '@/components/FeaturedSection';
+import HorizontalGallery from '@/components/HorizontalGallery';
+import AboutSection from '@/components/AboutSection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
+  useEffect(() => {
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="overflow-x-hidden">
+      <WebGLBackground />
+      <Navigation />
+      <main>
+        <HeroSection />
+        <FeaturedSection />
+        <HorizontalGallery />
+        <AboutSection />
+      </main>
+      <Footer />
     </div>
   );
 };
