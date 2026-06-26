@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -84,11 +85,14 @@ const HeroSection = () => {
 
             <div ref={buttonRef}>
               <Button
+                asChild
                 size="lg"
                 className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base rounded-none"
               >
-                Explore Collection
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Link to="/catalog">
+                  Explore Collection
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
             </div>
           </div>
