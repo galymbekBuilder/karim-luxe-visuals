@@ -1,18 +1,28 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ShoppingBag, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+const links = [
+  { to: '/catalog', label: 'Catalog' },
+  { to: '/lookbook', label: 'Lookbook' },
+  { to: '/about', label: 'About' },
+];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <nav
@@ -22,28 +32,33 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="text-3xl font-light tracking-wider text-foreground">
+          <Link to="/" className="text-3xl font-light tracking-[0.2em] text-foreground">
             KARIM
-          </a>
+          </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-12">
-            <a href="#collections" className="text-sm tracking-widest uppercase hover:text-accent transition-colors">
-              Collections
-            </a>
-            <a href="#lookbook" className="text-sm tracking-widest uppercase hover:text-accent transition-colors">
-              Lookbook
-            </a>
-            <a href="#about" className="text-sm tracking-widest uppercase hover:text-accent transition-colors">
-              About
-            </a>
+            {links.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className={`text-xs tracking-[0.25em] uppercase transition-colors ${
+                  location.pathname.startsWith(l.to)
+                    ? 'text-foreground'
+                    : 'text-foreground/70 hover:text-foreground'
+                }`}
+              >
+                {l.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Right Icons */}
-          <div className="flex items-center space-x-6">
-            <Button variant="ghost" size="icon" className="hover:bg-transparent">
+          <div className="flex items-center space-x-2">
+            <Button variant="ghost" size="icon" className="hover:bg-transparent hidden sm:inline-flex">
+              <Search className="w-5 h-5" />
+            </Button>
+            <Button variant="ghost" size="icon" className="hover:bg-transparent relative">
               <ShoppingBag className="w-5 h-5" />
+              <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-accent" />
             </Button>
             <Button
               variant="ghost"
@@ -56,30 +71,17 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-8 space-y-6 pb-8 border-t border-border pt-8">
-            <a
-              href="#collections"
-              className="block text-2xl font-light hover:text-accent transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Collections
-            </a>
-            <a
-              href="#lookbook"
-              className="block text-2xl font-light hover:text-accent transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Lookbook
-            </a>
-            <a
-              href="#about"
-              className="block text-2xl font-light hover:text-accent transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </a>
+            {links.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="block text-2xl font-light hover:text-accent transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
           </div>
         )}
       </div>
