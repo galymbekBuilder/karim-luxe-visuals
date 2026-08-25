@@ -8,7 +8,6 @@ import FeaturedSection from '@/components/FeaturedSection';
 import StorytellingSection from '@/components/StorytellingSection';
 import FullScreenBanner from '@/components/FullScreenBanner';
 import HorizontalGallery from '@/components/HorizontalGallery';
-import AtelierStats from '@/components/AtelierStats';
 import AboutSection from '@/components/AboutSection';
 import Footer from '@/components/Footer';
 
@@ -43,7 +42,6 @@ const Index = () => {
         <StorytellingSection />
         <FullScreenBanner />
         <HorizontalGallery />
-        <AtelierStats />
         <AboutSection />
       </main>
       <Footer />

@@ -2,11 +2,11 @@ import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { products } from '@/data/products';
+import { works } from '@/data/works';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const featured = products.slice(0, 3);
+const featured = works.slice(0, 3);
 
 const FeaturedSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -50,43 +50,43 @@ const FeaturedSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-20 gap-8">
           <div>
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-              — Edit 01
+              — Отобранное
             </p>
             <h2 ref={titleRef} className="text-6xl md:text-8xl font-light">
               Featured.
             </h2>
           </div>
           <p className="text-lg text-muted-foreground max-w-md">
-            Three pieces from the new season — hand-picked by the atelier
-            for the way they hold their shape, season after season.
+            Три серии для гонконгского чайного бренда NOT ONLY TEA. Ни одной
+            съёмки: упаковка, сцена, свет и цвет собраны с нуля.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {featured.map((product, index) => (
+          {featured.map((work, index) => (
             <Link
-              to={`/product/${product.id}`}
-              key={product.id}
+              to={`/work/${work.id}`}
+              key={work.id}
               className={`product-card group cursor-pointer block ${
                 index === 1 ? 'lg:translate-y-24' : ''
               }`}
             >
               <div className="relative overflow-hidden mb-6 aspect-[3/4]">
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={work.cover}
+                  alt={work.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-soft-black/0 group-hover:bg-soft-black/10 transition-colors duration-500" />
               </div>
               <div className="space-y-2">
                 <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-                  {product.category}
+                  {work.category}
                 </p>
                 <div className="flex justify-between items-baseline gap-3">
-                  <h3 className="text-2xl font-light">{product.name}</h3>
+                  <h3 className="text-2xl font-light">{work.title}</h3>
                   <p className="text-base text-muted-foreground whitespace-nowrap">
-                    {product.price}
+                    {work.meta}
                   </p>
                 </div>
               </div>
@@ -96,10 +96,10 @@ const FeaturedSection = () => {
 
         <div className="mt-20 text-center">
           <Link
-            to="/catalog"
+            to="/works"
             className="inline-block text-xs tracking-[0.3em] uppercase border-b border-foreground pb-2 hover:opacity-60 transition-opacity"
           >
-            View the full catalog →
+            Все работы →
           </Link>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import hero4 from '@/assets/hero-4.jpg';
-import hero6 from '@/assets/hero-6.jpg';
+import sceneWide from '@/assets/works/riviera-01.jpg';
+import sceneTall from '@/assets/works/butler-01.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,24 +53,24 @@ const StorytellingSection = () => {
           <div className="col-span-12 lg:col-span-8">
             <div className="relative aspect-[16/10] overflow-hidden">
               <img
-                src={hero4}
-                alt="Autumn in Paris"
+                src={sceneWide}
+                alt="Кадр летней кампании Riviera"
                 className="parallax-img w-full h-[120%] object-cover absolute inset-0"
               />
             </div>
             <p className="story-reveal mt-6 text-xs tracking-[0.3em] uppercase text-muted-foreground">
-              Chapter 01 — Le Marais, Paris · October
+              Процесс 01 — Промпт и сцена
             </p>
           </div>
 
           <div className="col-span-12 lg:col-span-3 lg:col-start-10 space-y-6 story-reveal">
             <h3 className="text-4xl md:text-5xl font-light leading-tight">
-              A coat that remembers the rain.
+              Не картинка, а сцена бренда.
             </h3>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Each piece carries the patina of the cities it was made for —
-              the soft grey of a Parisian morning, the gold of a Tuscan
-              afternoon. We design for a life that is lived outside.
+              Упаковка всегда живёт в контексте: поле для гольфа, первый снег,
+              терраса над морем. Сначала собираю сцену, свет и палитру, и только
+              потом ставлю в неё продукт — так кадр не выглядит коллажем.
             </p>
           </div>
         </div>
@@ -79,22 +79,23 @@ const StorytellingSection = () => {
         <div className="grid grid-cols-12 gap-6 lg:gap-12 items-start">
           <div className="col-span-12 lg:col-span-3 lg:pt-32 space-y-6 story-reveal">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">
-              Chapter 02 — Brera, Milano · Dawn
+              Процесс 02 — Контроль деталей
             </p>
             <h3 className="text-4xl md:text-5xl font-light leading-tight">
-              The icon, in baby camel hair.
+              Руки, текст, пропорции.
             </h3>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Forty hours of hand-tailoring. One horn button. A silhouette
-              that has not aged in seventy years — and will not.
+              Слабые места генерации известны заранее. Пальцы, надписи на
+              упаковке, стекло и отражения — это то, что проверяю до того, как
+              показать кадр. Финальная подчистка в Photoshop.
             </p>
           </div>
 
           <div className="col-span-12 lg:col-span-8 lg:col-start-5">
             <div className="relative aspect-[4/5] overflow-hidden">
               <img
-                src={hero6}
-                alt="Camel coat in Milan"
+                src={sceneTall}
+                alt="Кадр подарочной линейки с дворецким"
                 className="parallax-img w-full h-[120%] object-cover absolute inset-0"
               />
             </div>

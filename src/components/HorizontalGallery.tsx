@@ -1,18 +1,20 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import hero5 from '@/assets/hero-5.jpg';
-import hero6 from '@/assets/hero-6.jpg';
-import hero7 from '@/assets/hero-7.jpg';
-import hero8 from '@/assets/hero-8.jpg';
+import MediaFrame from '@/components/MediaFrame';
+import type { MediaItem } from '@/data/works';
+import posterGolf from '@/assets/works/poster-golf.jpg';
+import clayCourt from '@/assets/works/tennis-court-01.jpg';
+import christmas from '@/assets/works/christmas-01.jpg';
+import terrace from '@/assets/works/terrace-01.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const images = [
-  { id: 1, src: hero5, alt: 'Street Style 1' },
-  { id: 2, src: hero6, alt: 'Street Style 2' },
-  { id: 3, src: hero7, alt: 'Street Style 3' },
-  { id: 4, src: hero8, alt: 'Street Style 4' },
+const slides: { id: number; item: MediaItem; alt: string }[] = [
+  { id: 1, item: { type: 'video', src: '/media/reel-golf.mp4', poster: posterGolf }, alt: 'Ролик Fairway Aerial' },
+  { id: 2, item: { type: 'image', src: clayCourt }, alt: 'Кадр серии Clay Court' },
+  { id: 3, item: { type: 'image', src: christmas }, alt: 'Кадр новогодней серии' },
+  { id: 4, item: { type: 'image', src: terrace }, alt: 'Кадр серии Table by the Sea' },
 ];
 
 const HorizontalGallery = () => {
@@ -51,16 +53,16 @@ const HorizontalGallery = () => {
         <div ref={galleryRef} className="flex gap-8 px-6 lg:px-12">
           <div className="flex-shrink-0 w-screen flex items-center justify-center">
             <h2 className="text-6xl md:text-8xl lg:text-9xl font-light text-center">
-              Lookbook
+              Gallery
             </h2>
           </div>
 
-          {images.map((image) => (
-            <div key={image.id} className="flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw]">
+          {slides.map((slide) => (
+            <div key={slide.id} className="flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw]">
               <div className="relative h-[70vh] overflow-hidden">
-                <img
-                  src={image.src}
-                  alt={image.alt}
+                <MediaFrame
+                  item={slide.item}
+                  alt={slide.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -70,7 +72,8 @@ const HorizontalGallery = () => {
           <div className="flex-shrink-0 w-screen flex items-center justify-center">
             <div className="text-center max-w-md">
               <p className="text-xl font-light text-muted-foreground">
-                Every piece tells a story of craftsmanship and timeless design
+                Каждый кадр собран под конкретный формат ленты — от Stories
+                до горизонтального баннера
               </p>
             </div>
           </div>

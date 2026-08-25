@@ -1,33 +1,79 @@
-# Karim: Luxe Visuals
+# Galymbek Amanzhan — AI Designer · Портфолио
 
-Хочу сайт магазин для люксовый одежды в стиле Awwwards с названием "Karim"
-Добавь hero-блок с WebGL noise shader background, текст с kinetic typography, 
-smooth scroll (Lenis), одну pinned section со scroll-driven 3D camera, и галерею с horizontal scroll.
-Сделай структуру и подключи GSAP + Three.js (Code Mode).
-Используй нестандартные композиции, асимметрия, крупные отступы, смещённые блоки комбинация фото на весь экран + узкие колоноки с текстом.
-full-screen баннер с видео или фото
-крупный визуальный storytelling
-Каталог, Карточка товаров, О бренде, Lookbook
-Тёмная или молочная палитра
-Используй мои материалы также https://www.farfetch.com/
+Сайт-портфолио AI-дизайнера. Визуальный контент для брендов, полностью созданный
+нейросетями: карусели для соцсетей, вертикальные ролики и горизонтальные промо.
 
-This project was built with [Lovable](https://lovable.dev).
+Основной кейс — сезонные кампании для гонконгского чайного бренда **NOT ONLY TEA**:
+гольф-клуб, зимний дроп, теннисный сезон и Ривьера. Ни одной фотосъёмки — сцены,
+свет, продукт и движение камеры собраны с нуля, дальше монтаж, логотип в кадре
+и финальная ретушь.
 
-## Build with Lovable
+## Разделы
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/317100cd-c920-44df-bbb8-2af2f3ae5987).
+| Маршрут | Что показывает |
+| --- | --- |
+| `/` | Первый экран, избранные работы, процесс, full-screen видео-баннер |
+| `/works` | Все кейсы с фильтром по формату (Carousel / Reels / Motion) |
+| `/work/:id` | Кейс: медиа, задача, инструменты, форматы сдачи, платформы |
+| `/gallery` | Редакционная сетка кадров и горизонтальная pinned-галерея |
+| `/about` | Подход, опыт, инструменты и ML-часть, ускоряющая генерацию |
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+## Стек
 
-## Development
+- **React 18** + **TypeScript** + **Vite**
+- **Tailwind CSS** + **shadcn/ui**
+- **GSAP** + ScrollTrigger — анимации появления, параллакс, pinned-секции
+- **Lenis** — инерционный скролл
+- **Three.js** — WebGL-фон
+- **React Router** — маршрутизация
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Локальный запуск
+
+Нужен Node.js 18+.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+Сайт поднимется на `http://localhost:8080`.
+
+```sh
+npm run build     # продакшн-сборка в dist/
+npm run preview   # предпросмотр собранной версии
+npm run lint      # проверка кода
+```
+
+## Как устроен контент
+
+Все кейсы описаны в одном файле — `src/data/works.ts`. Каждая работа содержит
+название, формат, обложку, набор медиа (фото и видео), описание задачи,
+список инструментов и форматы сдачи. Чтобы добавить или изменить работу,
+править нужно только его.
+
+```
+src/
+  assets/works/    изображения и постеры для видео
+  components/      секции страниц и UI-кит
+  data/works.ts    описание всех кейсов
+  pages/           маршруты
+public/
+  media/           видео в web-оптимизированном mp4
+```
+
+## Медиа
+
+Изображения сжаты до ширины 1200 px, видео перекодированы из HEVC в **H.264**
+с `faststart` — исходные `.MOV` не проигрываются в Chrome и весят в десять раз
+больше. Итоговый вес всех медиа — около 28 МБ вместо исходных 320 МБ.
+
+## Инструменты, которыми сделаны работы
+
+Midjourney, Stable Diffusion (собственная LoRA под фирменный стиль), Nano Banana,
+Flux, Kling, Higgsfield, Runway, Topaz, Photoshop, Premiere, CapCut, Figma.
+
+## Контакты
+
+- Telegram — [@weesy10](https://t.me/weesy10)
+- Email — amanzhangalymbek4@gmail.com
+- GitHub — [galymbekBuilder](https://github.com/galymbekBuilder)

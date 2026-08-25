@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import hero1 from '@/assets/hero-1.jpg';
+import aboutImage from '@/assets/works/christmas-01.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,8 +51,8 @@ const AboutSection = () => {
           <div ref={imageRef} className="relative">
             <div className="aspect-[3/4] overflow-hidden">
               <img
-                src={hero1}
-                alt="About Karim"
+                src={aboutImage}
+                alt="Кадр новогодней кампании"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -61,24 +61,30 @@ const AboutSection = () => {
 
           <div ref={contentRef} className="space-y-8">
             <p className="text-xs tracking-widest uppercase text-muted-foreground">
-              Est. 2025
+              Galymbek Amanzhan — AI Designer
             </p>
             <h2 className="text-5xl md:text-7xl font-light leading-tight">
-              Defining Modern Luxury
+              Промпт как инструмент дизайна
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                KARIM represents a new generation of European luxury fashion, where traditional
-                craftsmanship meets contemporary design sensibility.
+                Год веду соцсети гонконгского чайного бренда NOT ONLY TEA. Задача
+                была одна — эстетика: чай должен выглядеть дорого, спокойно
+                и узнаваемо в каждом кадре.
               </p>
               <p>
-                Each piece is carefully selected from independent ateliers across Europe,
-                ensuring uncompromising quality and unique character. We believe in slow
-                fashion—timeless designs that transcend fleeting trends.
+                Промпт для меня не лотерея, а способ попасть в референс с двух-трёх
+                попыток: сначала сцена и палитра, потом продукт, потом подчистка
+                деталей. Дальше — монтаж роликов и логотип в кадре.
               </p>
               <p>
-                Our philosophy is simple: invest in pieces that tell your story, that age
-                beautifully, and that bring joy for years to come.
+                Веду проект целиком: от раскадровки серии до готовых файлов под
+                каждый формат ленты.
+              </p>
+              <p>
+                Отдельно занимаюсь ML: дообучил модель под фирменный стиль агентства
+                и настроил автоотбор вариантов — поэтому нужный кадр выходит быстрее,
+                чем перебором.
               </p>
             </div>
           </div>

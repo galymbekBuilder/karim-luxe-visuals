@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import heroImage from '@/assets/hero-1.jpg';
+import heroImage from '@/assets/works/golf-pack-01.jpg';
 
 const HeroSection = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -71,7 +71,7 @@ const HeroSection = () => {
             ref={headingRef}
             className="text-7xl md:text-9xl lg:text-[12rem] font-light leading-[0.9] mb-8 overflow-hidden"
           >
-            <span className="kinetic-text block">European</span>
+            <span className="kinetic-text block">Generated</span>
             <span className="kinetic-text block">Elegance</span>
           </h1>
 
@@ -80,7 +80,8 @@ const HeroSection = () => {
               ref={subtitleRef}
               className="text-xl md:text-2xl font-light max-w-md text-muted-foreground leading-relaxed"
             >
-              Curated luxury fashion for the modern aesthetic. Timeless pieces that transcend seasons.
+              AI-дизайнер. Сцены, ролики, монтаж и логотип в кадре — для чайного
+              бренда из Гонконга, брендинг-проектов агентства и рекламных промо.
             </p>
 
             <div ref={buttonRef}>
@@ -89,8 +90,8 @@ const HeroSection = () => {
                 size="lg"
                 className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base rounded-none"
               >
-                <Link to="/catalog">
-                  Explore Collection
+                <Link to="/works">
+                  Смотреть работы
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
